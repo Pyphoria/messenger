@@ -4,6 +4,7 @@ dotenv.config();
 import { registerJwt } from "./utils/jwt.js";
 import { authRoutes } from "./routes/auth.js";
 import { deviceRoutes } from "./routes/device.js";
+import { wsRoutes } from "./routes/ws.js"; // neu
 import { pool, initMigrations } from "./db/index.js";
 
 const server = Fastify({
@@ -17,6 +18,7 @@ server.get("/health", async () => ({ ok: true, now: new Date().toISOString() }))
 server.register(async (fastify) => {
   fastify.register(authRoutes);
   fastify.register(deviceRoutes);
+  fastify.register(wsRoutes); // neu: websocket route(s)
 });
 
 const start = async () => {
