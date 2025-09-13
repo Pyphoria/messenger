@@ -1,0 +1,24 @@
+{
+  "name": "messenger-api",
+  "version": "0.1.0",
+  "description": "Minimal backend for messenger PoC",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc -p .",
+    "start": "node dist/server.js",
+    "migrate": "psql \"$DATABASE_URL\" -f src/db/migrations/001_init.sql || true"
+  },
+  "dependencies": {
+    "argon2": "^0.31.0",
+    "dotenv": "^16.0.0",
+    "fastify": "^4.18.0",
+    "fastify-jwt": "^5.0.0",
+    "pg": "^8.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.0"
+  }
+}
